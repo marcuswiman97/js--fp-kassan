@@ -5,7 +5,7 @@
 // kan läsa och byta ut den, men ingen utanför varukorgen kommer åt den direkt.
 //
 // TODO: importera din subtotal från receipt.js, du behöver den i total().
-
+import { findProduct, subtotal } from "./receipt.js";
 export const createCart = (products) => {
   // Varukorgens minne. let, eftersom du byter ut arrayen vid varje ändring.
   // Raderna ser ut som i data.js: { productId: 'latte', quantity: 2 }
@@ -14,6 +14,15 @@ export const createCart = (products) => {
   const add = (productId, quantity = 1) => {
     // TODO 1: Finns produkten? Annars: throw new Error(`Okänd produkt: ${productId}`)
     //         Tips: products.some(...) eller din findProduct från del A.
+    const product = findProduct(products, productId);
+    // Om ingen produkt finns - kasta error
+    if (!product) {
+      throw new Error(`Okänd produkt; ${productId}`);
+      console.log("Produkten saknas");
+    }
+
+    // Här, efter att if-satsen avslutats!
+    const exist = lines.some((line) => line.productId === productId);
 
     // TODO 2: Finns produkten redan i lines?
     //   - Ja:  map över lines och returnera en ny rad med större quantity för just den

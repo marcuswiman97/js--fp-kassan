@@ -1,9 +1,12 @@
 // Kassan
-import { checkout } from './kassa-imperativ.js';
+import { checkout } from "./kassa-imperativ.js";
+import { formatReceipt } from "./receipt.js";
+import { products, lines, discountCodes, VAT_RATE } from "./data.js";
+import { createCart } from "./cart.js";
 
 // 1. Kör den gamla kassan. Kör den sedan en gång till, med samma rabattkod.
 // TODO: Gissa först. Blir kvittot detsamma båda gångerna? Varför inte?
-checkout('STUDENT');
+// checkout("STUDENT");
 // checkout('STUDENT');
 
 // --- Del A, på passet (15 min) ---
@@ -22,3 +25,5 @@ checkout('STUDENT');
 
 // --- Del B och C, självstudier till torsdagen ---
 // Se README. Ni tar med Kassan till workshoppen och granskar varandras kod.
+
+// console.log(formatReceipt(lines, products, "STUDENT", discountCodes, VAT_RATE));
