@@ -1,3 +1,5 @@
+// Räknar priser, rabatt, moms och skapar kvittot.
+
 /* Rena funktioner för kassan.
    Inga sidoeffekter eller ändringar av originaldata här.
 */

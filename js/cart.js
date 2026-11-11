@@ -1,3 +1,5 @@
+//Lägger till, tar bort och håller reda på varorna.
+
 // Del B: createCart() med closure. Se README.
 //
 // En closure är en funktion som minns variablerna från där den skapades.
@@ -18,11 +20,22 @@ export const createCart = (products) => {
     // Om ingen produkt finns - kasta error
     if (!product) {
       throw new Error(`Okänd produkt; ${productId}`);
-      console.log("Produkten saknas");
     }
 
     // Här, efter att if-satsen avslutats!
     const exist = lines.some((line) => line.productId === productId);
+    if (exist) {
+      lines = lines.map((line) =>
+        line.productId === productId
+          ? {
+              ...line,
+              quantity: line.quantity + quantity,
+            }
+          : line
+      );
+    } else {
+      lines = [...lines, { productId, quantity }];
+    }
 
     // TODO 2: Finns produkten redan i lines?
     //   - Ja:  map över lines och returnera en ny rad med större quantity för just den
