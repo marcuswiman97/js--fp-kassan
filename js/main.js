@@ -34,10 +34,20 @@ cart.add("latte", 2);
 cart.add("bulle");
 cart.add("latte");
 
-console.log(cart.lines());
-console.log(cart.total());
+// console.log(cart.lines());
+// console.log(cart.total());
 
-cart.remove("bulle");
+// cart.remove("bulle");
 
-console.log(cart.lines());
-console.log(cart.total());
+// console.log(cart.lines());
+// console.log(cart.total());
+
+const receiptElement = document.querySelector("#receipt");
+
+receiptElement.textContent = formatReceipt(
+  cart.lines(),
+  products,
+  "STUDENT",
+  discountCodes,
+  VAT_RATE
+);
