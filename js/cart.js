@@ -47,13 +47,20 @@ export const createCart = (products) => {
   const remove = (productId) => {
     // TODO 3: en ny array utan raden för productId. Vilken arraymetod väljer bort saker?
     //         Inga splice.
+    //Gå igenom varukorgens alla rader och behåll de rader där produktens ID
+    // inte är samma som produkten vi vill ta bort.
+    //.filter() är arraymetoden
+    lines = lines.filter((line) => line.productId !== productId);
   };
 
   return {
     add,
     remove,
     // TODO 4: lines() ska returnera en kopia, så att ingen utanför kan ändra i varukorgen.
+    //Lines: är en egenskap
+    lines: () => lines.map((line) => ({ ...line })),
     // TODO 5: total() räknar summan med din subtotal från del A.
+    total: () => subtotal(lines, products),
   };
 };
 

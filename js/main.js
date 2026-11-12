@@ -27,3 +27,17 @@ import { createCart } from "./cart.js";
 // Se README. Ni tar med Kassan till workshoppen och granskar varandras kod.
 
 // console.log(formatReceipt(lines, products, "STUDENT", discountCodes, VAT_RATE));
+
+const cart = createCart(products);
+
+cart.add("latte", 2);
+cart.add("bulle");
+cart.add("latte");
+
+console.log(cart.lines());
+console.log(cart.total());
+
+cart.remove("bulle");
+
+console.log(cart.lines());
+console.log(cart.total());
